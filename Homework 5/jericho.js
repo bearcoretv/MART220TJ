@@ -10,6 +10,7 @@ var i = 0;
 var f = 0;
 
 
+
 function preload() {
   result = loadStrings('assets/paths/leaves.txt');
   sand = loadImage('assets/images/sand.jpg');
@@ -66,6 +67,7 @@ function draw()
     for(var v = 0; v < result.length; v++)
     {
       translate(25,25);
+      rotate(PI/6);
       image(leafFade[f], leafObject[i].getX(), leafObject[i].getY());
     }
 
@@ -78,6 +80,32 @@ function mouseClicked()
    
   }
 
+function incrimentFade()
+  {
+    if(f >= 6)
+    {
+      appearInterval = setInterval(incrimentAppear, 5000)
+      clearInterval(fadeInterval)
+    }
+    else
+    {
+      f++
+    }
+  }
+
+function incrimentAppear()
+{
+  if(f <= 0)
+  {
+    clearInterval(appearInterval)
+  }
+  else
+  {
+    f--
+  }
+}
+
+  /*
 function incrimentFade()
   {
     if(f <= leafFade.length)
@@ -104,3 +132,4 @@ function incrimentAppear()
       clearInterval(appearInterval);
     }
   }
+  */
